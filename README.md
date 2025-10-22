@@ -16,7 +16,7 @@ These instructions assume you are starting with a fresh installation of **Raspbe
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/Wm-Mason-Cyber/rpi-host_id-server.git](https://github.com/Wm-Mason-Cyber/rpi-host_id-server.git)
+    git clone https://github.com/Wm-Mason-Cyber/rpi-host_id-server.git
     cd rpi-host_id-server
     ```
 
