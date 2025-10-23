@@ -52,7 +52,7 @@
                         <p class="text-2xl font-bold text-white">
                             <?php
                                 // Execute a command to get the primary IP address
-                                $ipAddress = shell_exec("hostname -I | awk '{print $1}'");
+                                $ipAddress = shell_exec("sudo hostname -I | awk '{print $1}'");
                                 echo trim($ipAddress) ?: 'Not Found';
                             ?>
                         </p>
@@ -68,7 +68,7 @@
                     <pre><?php
                         // Execute netstat command to find listening ports. The 'www-data' user (which apache runs as)
                         // may need permissions for this. If this section is empty, see setup instructions.
-                        $output = shell_exec("netstat -tuln");
+                        $output = shell_exec("sudo netstat -tuln");
 
                         if ($output) {
                             echo htmlspecialchars($output);
