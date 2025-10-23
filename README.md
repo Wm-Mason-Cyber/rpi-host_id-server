@@ -6,9 +6,9 @@ This server is designed to provide immediate, actionable network information (li
 
 ## ✨ Features
 
-* **CyberSec Dashboard:** The main index page (`/`) serves an interactive, terminal-themed dashboard displaying the RPI's local **IP address** and the output of **`netstat -tuln`** (listening ports).
-* **Plaintext IP Endpoint:** A dedicated endpoint (`/plain-ip.php`) that returns **only the RPI's IP address in plaintext**, ideal for simple scripts, LCD displays, or quick command-line queries.
-* **Quick Deployment:** A single shell script automates the installation of Apache2, PHP, file deployment, and critical permission setup.
+*   **CyberSec Dashboard:** The main index page (`/`) serves an interactive, terminal-themed dashboard displaying the RPI's local **IP address**, **hostname**, a list of **non-standard users**, and the output of **`netstat -tuln`** (listening ports).
+*   **Plaintext IP Endpoint:** A dedicated endpoint (`/plain-ip.php`) that returns **only the RPI's IP address in plaintext**, ideal for simple scripts, LCD displays, or quick command-line queries.
+*   **Quick Deployment:** A single shell script automates the installation of Apache2, PHP, file deployment, and critical permission setup.
 
 ## 🚀 Quick Setup
 

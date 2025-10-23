@@ -60,6 +60,42 @@
                 </div>
             </div>
 
+            <!-- Hostname Section -->
+            <div class="bg-gray-800 border-2 border-green-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 terminal-glow">[ Hostname ]</h2>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h14M5 8h14m-7 4h7m-7 4h7m-5 4v-4l-1.179-2.358a1.5 1.5 0 00-2.142 0l-1.179 2.358v4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                        <p class="text-sm text-green-600">Device Hostname:</p>
+                        <p class="text-2xl font-bold text-white">
+                            <?php
+                                $hostname = shell_exec("sudo hostname");
+                                echo trim($hostname) ?: 'Not Found';
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Non-Standard Users Section -->
+            <div class="bg-gray-800 border-2 border-green-800 rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 terminal-glow">[ Non-Standard Users ]</h2>
+                <p class="text-sm text-green-600 mb-4">Users other than the default 'pi' user.</p>
+                <div class="bg-black rounded p-4 h-96 overflow-auto font-mono text-sm">
+                    <pre><?php
+                        // Get all users with UID >= 1000 (standard user range) excluding 'pi'
+                        $users = shell_exec("sudo cut -d: -f1,3 /etc/passwd | sudo awk -F: '$2>=1000 && $1!=\"pi\" {print $1}'");
+                        if ($users) {
+                            echo htmlspecialchars($users);
+                        } else {
+                            echo "No non-standard users found (besides 'pi').";
+                        }
+                    ?></pre>
+                </div>
+            </div>
+
             <!-- Open Ports Section -->
             <div class="bg-gray-800 border-2 border-green-800 rounded-lg p-6">
                 <h2 class="text-2xl font-bold mb-4 terminal-glow">[ Listening Ports ]</h2>

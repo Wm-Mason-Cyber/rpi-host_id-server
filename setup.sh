@@ -42,9 +42,9 @@ sudo ln -sf "${WEB_ROOT}/dashboard.php" "${WEB_ROOT}/index.html"
 
 # 8. Set permissions for Apache's www-data user to run netstat and hostname
 # This is a critical security step for the netstat function in the dashboard.
-echo "Setting sudo permissions for www-data to run netstat and hostname..."
-# This allows www-data to execute netstat -tuln and hostname -I | awk '{print $1}' without a password
-echo "www-data ALL=(ALL) NOPASSWD: /usr/bin/netstat -tuln, /usr/bin/hostname -I" | sudo tee /etc/sudoers.d/apache_cmds
+echo "Setting sudo permissions for www-data to run netstat, hostname, cut, and awk..."
+# This allows www-data to execute netstat -tuln and hostname and the user command without a password
+echo "www-data ALL=(ALL) NOPASSWD: /usr/bin/netstat -tuln, /usr/bin/hostname, /usr/bin/cut, /usr/bin/awk" | sudo tee /etc/sudoers.d/apache_cmds
 
 # In the PHP files, we need to prefix the shell_exec commands with 'sudo'
 
@@ -61,6 +61,8 @@ echo "www-data ALL=(ALL) NOPASSWD: /usr/bin/netstat -tuln, /usr/bin/hostname -I"
 echo "Patching dashboard.php and plain-ip.php to use 'sudo'..."
 sudo sed -i 's/shell_exec("hostname/shell_exec("sudo hostname/g' "${WEB_ROOT}/dashboard.php"
 sudo sed -i 's/shell_exec("netstat/shell_exec("sudo netstat/g' "${WEB_ROOT}/dashboard.php"
+sudo sed -i 's/shell_exec("cut/shell_exec("sudo cut/g' "${WEB_ROOT}/dashboard.php"
+sudo sed -i 's/shell_exec("awk/shell_exec("sudo awk/g' "${WEB_ROOT}/dashboard.php"
 sudo sed -i 's/shell_exec("hostname/shell_exec("sudo hostname/g' "${WEB_ROOT}/plain-ip.php"
 
 
