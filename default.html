@@ -28,6 +28,9 @@
         .terminal-glow {
             text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
         }
+        code{
+            color:#ff6d6d;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-red-400 min-h-screen p-4 sm:p-8">
@@ -35,8 +38,8 @@
     <div class="max-w-4xl mx-auto z-10 relative">
 
         <header class="border-b-2 border-red-700 pb-4 mb-8">
-            <h1 class="text-3xl sm:text-5xl font-bold terminal-glow">Raspberry Pi // CyberSec Default</h1>
-            <p class="text-red-500 mt-2">STATUS: <span class="font-bold text-red-300">Apache2 Error</span></p>
+            <h1 class="text-3xl sm:text-5xl font-bold terminal-glow">Raspberry Pi // Default</h1>
+            <p class="text-red-500 mt-2">STATUS: <span class="font-bold text-red-300">Apache2 || setup.sh Error</span></p>
         </header>
 
         <main>
@@ -50,10 +53,10 @@
                     <div>
                         <p class="text-sm text-red-600">Not Found:</p>
                         <p class="text-2xl font-bold text-white">
-                            Apache2 default page was not found, so you're seeing this...
+                            Apache2 default <code>index.html</code> page not found...
                         </p>
-                        <p class="text-2xl font-bold text-white">
-                            Check Apache2, <code>/var/www/html/</code>, and your <code>setup.sh</code> script.
+                        <p class="text-xl font-bold text-white">
+                            Check Apache2, <code>/var/www/html/</code>, and your <code>setup.sh</code> script to see which of these is misconfigured. Seeing this page is bad.
                         </p>
                     </div>
                 </div>
